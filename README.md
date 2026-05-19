@@ -4,9 +4,7 @@ Junior Data Analyst
 
 ## About Me
 
-Hi, I'm Anh Tuan Nguyen, a Junior Data Analyst interested in turning raw data into clear insights and practical decisions. I enjoy working with data, finding patterns, building reports, and presenting results in a way that is easy to understand.
-
-I am developing my skills in data cleaning, analysis, visualisation, and dashboard building, and I am always looking for opportunities to learn through real projects.
+Hi, I'm Anh Tuan Nguyen, a Junior Data Analyst interested in turning raw data into clear insights and practical decisions. I enjoy working with data, finding patterns, building reports, and presenting results in an easy-to-understand.
 
 ## Skills
 
@@ -30,6 +28,6 @@ I am developing my skills in data cleaning, analysis, visualisation, and dashboa
 ## Contact
 
 - Email: anh27.tuan02@gmail.com
-- LinkedIn: [https://www.linkedin.com/in/your-profile](https://www.linkedin.com/in/tommy2702/)
+- LinkedIn: https://www.linkedin.com/in/tommy2702/
 
 Thanks for visiting my profile.
