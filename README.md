@@ -1,6 +1,6 @@
 # Anh Tuan Nguyen
 
-Junior Data Analyst
+**Junior Data Analyst**
 
 ## About Me
 
