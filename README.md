@@ -25,9 +25,4 @@ Hi, I'm Anh Tuan Nguyen, a Junior Data Analyst interested in turning raw data in
 - Power BI
 
 
-## Contact
-
-- Email: anh27.tuan02@gmail.com
-- LinkedIn: https://www.linkedin.com/in/tommy2702/
-
 Thanks for visiting my profile.
