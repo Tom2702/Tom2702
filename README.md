@@ -18,7 +18,6 @@ Hi, I'm Anh Tuan Nguyen, a Junior Data Analyst interested in turning raw data in
 
 ## Tools
 
-- Excel
 - SQL
 - Python
 - Pandas
