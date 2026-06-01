@@ -11,7 +11,6 @@ Hi, I'm Anh Tuan Nguyen, a Junior Data Analyst interested in turning raw data in
 - Data analysis and reporting
 - Data cleaning and preparation
 - SQL queries and database exploration
-- Excel and spreadsheet analysis
 - Python for data analysis
 - Data visualisation and dashboards
 - Business insight and problem solving
