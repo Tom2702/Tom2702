@@ -6,15 +6,16 @@
 
 1. [Objective](#1-objective)
 2. [Dataset Description](#2-dataset-description)
-3. [Data Preparation & EDA](#3-data-preparation--eda)
-4. [Supervised Learning](#4-supervised-learning)
-5. [Unsupervised Learning](#5-unsupervised-learning)
-6. [Final Results](#6-final-results)
-7. [Business Recommendations](#7-business-recommendations)
-8. [Conclusion](#8-conclusion)
-9. [How To Run](#9-how-to-run)
+3. [Main Process](#3-main-process)
+   - [Supervised Learning](#supervised-learning)
+   - [Unsupervised Learning](#unsupervised-learning)
+4. [Final Results](#4-final-results)
+5. [Business Recommendations](#5-business-recommendations)
+6. [Conclusion](#6-conclusion)
+7. [How To Run](#7-how-to-run)
 
 ---
+
 ## 1. Objective
 
 This project analyzes customer churn behavior for an e-commerce business and builds machine learning models to predict whether a customer is likely to churn. The project also segments churned customers into behavioral groups so that the business can design more targeted retention and win-back strategies.
@@ -86,19 +87,16 @@ churn_predict.csv
 
 ---
 
-## 3. Data Preparation & EDA
+## 3. Main Process
 
-> **Section focus:** Prepare the dataset, inspect variable distributions, clean data quality issues, and identify churn-related behavior before modeling.
+> This section is organized into three parts: data preparation and EDA, supervised learning for churn prediction, and unsupervised learning for churned-customer segmentation.
 
-| Step | Purpose | Main Output |
+| Part | Purpose | Related Steps |
 |---|---|---|
-| 3.1 Data Loading | Load dataset and inspect structure | Dataset preview, shape, and data types |
-| 3.2 Feature Classification | Separate ID, numerical, categorical, and target variables | Modeling-ready feature groups |
-| 3.3 Distribution Analysis | Understand numerical and categorical distributions | Descriptive statistics, skewness, and charts |
-| 3.4 Data Cleaning | Handle missing values and inconsistent labels | Cleaned dataset for analysis/modeling |
-| 3.5 Outlier Detection | Review unusual values in numerical variables | Outlier notes and boxplot placeholder |
-| 3.6 Churn Relationship | Compare churned vs active customer behavior | Churn pattern tables and category churn rates |
-| 3.7 Behavior Summary | Summarize key churn behavior | EDA-driven business interpretation |
+| Data Preparation & EDA | Understand, clean, and analyze customer churn behavior | 3.1 - 3.7 |
+| Supervised Learning | Build and evaluate churn prediction models | 3.8 - 3.14 |
+| Unsupervised Learning | Segment churned customers into behavior groups | 3.15 - 3.16 |
+
 ### 3.1 Data Loading and Initial Inspection
 
 **Source code**
@@ -428,21 +426,19 @@ Key behavior patterns:
 
 ---
 
-## 4. Supervised Learning
+### Supervised Learning
 
-> **Learning type:** Supervised learning is used to predict the binary target variable `Churn`, where `1` means the customer churned and `0` means the customer remained active.
+> **Goal:** Predict the target variable `Churn` using labeled customer data.
 
-| Step | Method | Main Output |
-|---|---|---|
-| 4.1 Preparation | One-hot encoding, train-test split, scaling | Modeling dataset and stratified split |
-| 4.2 Logistic Regression | Baseline classification model | Balanced accuracy 0.805 |
-| 4.3 Random Forest | Tree-based classification model | Balanced accuracy 0.922 |
-| 4.4 Hyperparameter Tuning | GridSearchCV on Random Forest | Best model parameters |
-| 4.5 Tuned Random Forest | Final supervised model | Balanced accuracy 0.956 |
-| 4.6 Model Comparison | Compare classification metrics | Best model selection |
-| 4.7 Threshold Tuning | Review precision-recall tradeoff | Placeholder for threshold result image |
+| Model / Step | Role |
+|---|---|
+| Logistic Regression | Baseline classification model |
+| Random Forest | Tree-based classification model |
+| GridSearchCV | Hyperparameter tuning for Random Forest |
+| Tuned Random Forest | Final selected supervised learning model |
+| Threshold Tuning | Review precision-recall trade-off for churn targeting |
 
-### 4.1 Supervised Learning Preparation
+### 3.8 Supervised Learning Preparation
 
 **Source code**
 
@@ -491,7 +487,7 @@ Train-test split:
 - Stratified by target variable Churn
 ```
 
-### 4.2 Logistic Regression Model
+### 3.9 Logistic Regression Model
 
 **Source code**
 
@@ -523,7 +519,7 @@ Class 1 precision: 0.45, recall: 0.81, f1-score: 0.58
 Accuracy: 0.80
 ```
 
-### 4.3 Random Forest Model
+### 3.10 Random Forest Model
 
 **Source code**
 
@@ -560,7 +556,7 @@ Class 1 precision: 0.95, recall: 0.85, f1-score: 0.90
 Accuracy: 0.97
 ```
 
-### 4.4 Hyperparameter Tuning
+### 3.11 Hyperparameter Tuning
 
 **Source code**
 
@@ -597,7 +593,7 @@ min_samples_split: 5
 n_estimators: 200
 ```
 
-### 4.5 Tuned Random Forest Evaluation
+### 3.12 Tuned Random Forest Evaluation
 
 **Source code**
 
@@ -628,7 +624,7 @@ Class 1 precision: 0.91, recall: 0.93, f1-score: 0.92
 Accuracy: 0.97
 ```
 
-### 4.6 Model Comparison and Advanced Evaluation
+### 3.13 Model Comparison and Advanced Evaluation
 
 **Source code**
 
@@ -703,7 +699,7 @@ plt.show()
 ![Feature Importance](images/feature_importance.png)
 ```
 
-### 4.7 Threshold Tuning
+### 3.14 Threshold Tuning
 
 **Source code**
 
@@ -734,16 +730,18 @@ threshold_results_df.sort_values('F1-score (Churn=1)', ascending=False).head(10)
 
 ---
 
-## 5. Unsupervised Learning
+### Unsupervised Learning
 
-> **Learning type:** Unsupervised learning is used after churn prediction to segment only churned customers. This helps design different retention and win-back actions for different churn behavior groups.
+> **Goal:** Segment churned customers into different behavioral groups so the business can design targeted win-back and retention actions.
 
-| Step | Method | Main Output |
-|---|---|---|
-| 5.1 Churned Customer Segmentation | K-Means clustering on `Churn = 1` customers | 7 churned-customer segments |
-| 5.2 Segment Profiling | Numerical profile, categorical profile, PCA visualization | Segment characteristics and suggested actions |
+| Method / Step | Role |
+|---|---|
+| K-Means Clustering | Group churned customers based on behavior patterns |
+| Elbow Method | Support the choice of number of clusters |
+| Segment Profiling | Interpret each segment and map it to business actions |
+| PCA Visualization | Display customer segments in two-dimensional space |
 
-### 5.1 Churned Customer Segmentation
+### 3.15 Churned Customer Segmentation
 
 **Source code**
 
@@ -827,7 +825,7 @@ print(f'Silhouette Score for k={optimal_k}: {silhouette_avg:.4f}')
 ![Silhouette Score Output](images/silhouette_score_output.png)
 ```
 
-### 5.2 Segment Profiling
+### 3.16 Segment Profiling
 
 **Source code**
 
@@ -878,9 +876,9 @@ plt.show()
 
 ---
 
-## 6. Final Results
+## 4. Final Results
 
-### 6.1 Dataset and EDA Results
+### 4.1 Dataset and EDA Results
 
 - The dataset contains 5,630 customers and 20 variables.
 - The target variable is imbalanced: 83.16% active customers and 16.84% churned customers.
@@ -890,7 +888,7 @@ plt.show()
 - Churned customers receive lower average cashback.
 - Certain categories show higher churn risk, especially Mobile Phone order category, Single marital status, Cash on Delivery, E wallet, and City Tier 3.
 
-### 6.2 Supervised Learning Results
+### 4.2 Model Results
 
 | Model | Accuracy | Balanced Accuracy | Precision | Recall | F1-score |
 |---|---:|---:|---:|---:|---:|
@@ -907,7 +905,7 @@ Recall for churned customers: 0.93
 F1-score for churned customers: 0.92
 ```
 
-### 6.3 Unsupervised Learning Results
+### 4.3 Segmentation Results
 
 - K-Means clustering was applied only to churned customers.
 - The notebook uses `k = 7` segments.
@@ -917,7 +915,7 @@ F1-score for churned customers: 0.92
 
 ---
 
-## 7. Business Recommendations
+## 5. Business Recommendations
 
 1. **Reduce early lifecycle churn**
 
@@ -945,7 +943,7 @@ F1-score for churned customers: 0.92
 
 ---
 
-## 8. Conclusion
+## 6. Conclusion
 
 This project shows that churn prediction can help the business identify high-risk customers before they leave. The analysis indicates that churn is strongly related to tenure, complaint behavior, cashback, order category, payment mode, marital status, and city tier.
 
@@ -953,30 +951,7 @@ Among the tested models, the tuned Random Forest performs best, with a balanced 
 
 ---
 
-## 9. How To Run
 
-Clone the repository:
 
-```bash
-git clone https://github.com/Tom2702/ML_Ecommerce_Churn_Prediction_Python.git
-cd ML_Ecommerce_Churn_Prediction_Python
-```
 
-Install dependencies:
 
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn joblib openpyxl
-```
-
-Run the notebook:
-
-```text
-ML_Project.ipynb
-```
-
-Recommended workflow:
-
-1. Place `Churn_prediction.xlsx` or `churn_predict.csv` in the same directory as the notebook.
-2. Run all notebook cells from top to bottom.
-3. Export result charts and upload them to the `images/` folder or GitHub attachments.
-4. Replace remaining image placeholders with the exported result images.
